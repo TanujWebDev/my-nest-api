@@ -1,0 +1,26 @@
+// dto/nav-master-list.dto.ts
+import {
+  IsArray,
+  IsBoolean,
+  IsNumber,
+  IsOptional,
+  IsObject,
+} from "class-validator";
+
+export class NavMasterListDto {
+  @IsArray()
+  fields!: string[];
+
+  @IsBoolean()
+  count_only!: boolean;
+
+  @IsNumber()
+  start!: number;
+
+  @IsNumber()
+  length!: number;
+
+  @IsOptional()
+  @IsObject()
+  filter_param?: any;
+}
