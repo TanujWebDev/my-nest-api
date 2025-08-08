@@ -1,4 +1,3 @@
-// dto/nav-master-list.dto.ts
 import {
   IsArray,
   IsBoolean,
@@ -22,5 +21,5 @@ export class NavMasterListDto {
 
   @IsOptional()
   @IsObject()
-  filter_param?: any;
+  filter_param?: Record<string, any>;
 }

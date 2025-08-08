@@ -1,36 +1,35 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from "@nestjs/common";
+import { LoginDto } from "./dto/auth.dto";
 
 @Injectable()
 export class AuthService {
-  paLogin(body: any) {
+  paLogin(body: LoginDto) {
     const { username, password } = body.data;
 
-    // Dummy logic
-    if (username === 'admin' && password === '1234') {
+    if (username === "admin" && password === "1234") {
       return {
-        message: 'PA Login successful',
-        access_token: 'sample_token_123',
+        message: "PA Login successful",
+        access_token: "sample_token_123",
       };
     }
 
     return {
-      message: 'Invalid credentials',
+      message: "Invalid credentials",
     };
   }
 
-  memberLogin(body: any) {
+  memberLogin(body: LoginDto) {
     const { username, password } = body.data;
 
-    // Dummy logic
-    if (username === 'member' && password === 'abcd') {
+    if (username === "member" && password === "abcd") {
       return {
-        message: 'Member Login successful',
-        access_token: 'sample_token_456',
+        message: "Member Login successful",
+        access_token: "sample_token_456",
       };
     }
 
     return {
-      message: 'Invalid member credentials',
+      message: "Invalid member credentials",
     };
   }
 }

@@ -1,13 +1,13 @@
-import { Body, Controller, Post } from "@nestjs/common";
-import { SxpRegisterService } from "./sxp-register.service";
-import { SxpRegisterDto } from "./../dto/sxp-register.dto";
+import { Controller, Post, Body } from "@nestjs/common";
+import { StpRegisterService } from "./stp-register.service";
+import { StpRegisterDto } from "./dto/stp-register.dto";
 
 @Controller("sxp_register")
-export class SxpRegisterController {
-  constructor(private readonly sxpRegisterService: SxpRegisterService) {}
+export class StpRegisterController {
+  constructor(private readonly stpRegisterService: StpRegisterService) {}
 
-  @Post()
-  handleSxpRegister(@Body() body: SxpRegisterDto) {
-    return this.sxpRegisterService.processSxp(body);
+  @Post("stp_register")
+  handleStpRegister(@Body() dto: StpRegisterDto) {
+    return this.stpRegisterService.processStpRegister(dto);
   }
 }

@@ -1,60 +1,72 @@
-import { IsArray, IsObject, ValidateNested } from "class-validator";
+import {
+  IsString,
+  IsArray,
+  IsNotEmpty,
+  ValidateNested,
+  IsNumber,
+} from "class-validator";
 import { Type } from "class-transformer";
 
 class NomineeChangeInfo {
-  amc_code!: string;
-  user_code!: string;
-  folio_no!: string;
-  nct_type!: string;
-  tax_number!: string;
-  twofa_auth!: string;
-  email!: string;
-  mobile_no!: string;
-  j1_email!: string;
-  j1_mobile!: string;
-  broke_cd!: string;
-  ria_code!: string;
-  nom_opt!: string;
-  nom1_name!: string;
-  nom1_rela!: string;
-  nom1_per!: string;
-  nom1_pan!: string;
-  nom1_min_f!: string;
-  nom1_dob!: string;
-  nom1_guard!: string;
-  nom1_grela!: string;
-  nom1_gpan!: string;
-  nom2_name!: string;
-  nom2_rela!: string;
-  nom2_per!: string;
-  nom2_pan!: string;
-  nom2_min_f!: string;
-  nom2_dob!: string;
-  nom2_guard!: string;
-  nom2_grela!: string;
-  nom2_gpan!: string;
-  nom3_name!: string;
-  nom3_rela!: string;
-  nom3_per!: string;
-  nom3_pan!: string;
-  nom3_min_f!: string;
-  nom3_dob!: string;
-  nom3_guard!: string;
-  nom3_grela!: string;
-  nom3_gpan!: string;
+  @IsString() amc_code!: string;
+  @IsString() user_code!: string;
+  @IsString() folio_no!: string;
+  @IsString() nct_type!: string;
+  @IsString() tax_number!: string;
+  @IsString() twofa_auth!: string;
+  @IsString() email!: string;
+  @IsString() mobile_no!: string;
+  @IsString() j1_email!: string;
+  @IsString() j1_mobile!: string;
+  @IsString() broke_cd!: string;
+  @IsString() ria_code!: string;
+
+  @IsString() nom_opt!: string;
+
+  @IsString() nom1_name!: string;
+  @IsString() nom1_rela!: string;
+  @IsString() nom1_per!: string;
+  @IsString() nom1_pan!: string;
+  @IsString() nom1_min_f!: string;
+  @IsString() nom1_dob!: string;
+  @IsString() nom1_guard!: string;
+  @IsString() nom1_grela!: string;
+  @IsString() nom1_gpan!: string;
+
+  @IsString() nom2_name!: string;
+  @IsString() nom2_rela!: string;
+  @IsString() nom2_per!: string;
+  @IsString() nom2_pan!: string;
+  @IsString() nom2_min_f!: string;
+  @IsString() nom2_dob!: string;
+  @IsString() nom2_guard!: string;
+  @IsString() nom2_grela!: string;
+  @IsString() nom2_gpan!: string;
+
+  @IsString() nom3_name!: string;
+  @IsString() nom3_rela!: string;
+  @IsString() nom3_per!: string;
+  @IsString() nom3_pan!: string;
+  @IsString() nom3_min_f!: string;
+  @IsString() nom3_dob!: string;
+  @IsString() nom3_guard!: string;
+  @IsString() nom3_grela!: string;
+  @IsString() nom3_gpan!: string;
 }
 
 export class NomineeChangeDto {
-  data!: {
-    user_id: string;
-    member_code: string;
-    password: string;
-    amc: string;
-    rta: string;
-    member_id: string;
-    client_code: string;
-    entity_type: string;
-    ref_id: number;
-    nominee_change_info: NomineeChangeInfo[];
-  };
+  @IsNotEmpty() @IsString() user_id!: string;
+  @IsNotEmpty() @IsString() member_code!: string;
+  @IsNotEmpty() @IsString() password!: string;
+  @IsNotEmpty() @IsString() amc!: string;
+  @IsNotEmpty() @IsString() rta!: string;
+  @IsNotEmpty() @IsString() member_id!: string;
+  @IsNotEmpty() @IsString() client_code!: string;
+  @IsNotEmpty() @IsString() entity_type!: string;
+  @IsNotEmpty() @IsNumber() ref_id!: number;
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => NomineeChangeInfo)
+  nominee_change_info!: NomineeChangeInfo[];
 }

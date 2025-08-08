@@ -1,13 +1,14 @@
 import { Injectable } from "@nestjs/common";
+import { SxpSetPauseDto } from "./dto/sxp-set-pause.dto";
 
 @Injectable()
 export class SxpSetPauseService {
-  handleSetPause(body: any) {
-    console.log("Received SXP SET PAUSE body:", body);
+  handleSetPause(dto: SxpSetPauseDto) {
+    console.log("Received SXP SET PAUSE body:", dto);
 
     return {
       message: "SXP pause request processed successfully",
-      received: body,
+      received: dto,
     };
   }
 }

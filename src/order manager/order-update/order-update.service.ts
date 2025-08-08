@@ -1,11 +1,13 @@
+// order-update.service.ts
 import { Injectable } from "@nestjs/common";
+import { OrderUpdateDto } from "./dto/order-update.dto";
 
 @Injectable()
 export class OrderUpdateService {
-  orderUpdate(body: any) {
+  orderUpdate(dto: OrderUpdateDto) {
     return {
-      message: "order_update_purchase API hit successfully",
-      body,
+      message: "Order update processed successfully",
+      updatedData: dto,
     };
   }
 }

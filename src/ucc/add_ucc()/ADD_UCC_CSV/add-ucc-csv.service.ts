@@ -1,12 +1,13 @@
 import { Injectable } from "@nestjs/common";
+import { AddUccCsvDto } from "./dto/add-ucc-csv.dto";
 
 @Injectable()
 export class AddUccCsvService {
-  runCsvUcc(body: any) {
-    // dummy response — replace with logic later
+  runCsvUcc(dto: AddUccCsvDto) {
     return {
       message: "✅ ucc_csv_runner API hit successfully!",
-      receivedData: body,
+      totalRecords: dto.records.length,
+      receivedData: dto,
     };
   }
 }

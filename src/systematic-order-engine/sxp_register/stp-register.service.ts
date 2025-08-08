@@ -1,14 +1,14 @@
 import { Injectable } from "@nestjs/common";
+import { StpRegisterDto } from "./dto/stp-register.dto";
 
 @Injectable()
 export class StpRegisterService {
-  processStpRegister(body: any) {
-    console.log("STP Register Body:", body);
+  processStpRegister(dto: StpRegisterDto) {
+    console.log("STP Register Body:", dto);
 
-    // ✅ Dummy response
     return {
       message: "STP Register API called successfully",
-      data: body,
+      data: dto,
     };
   }
 }

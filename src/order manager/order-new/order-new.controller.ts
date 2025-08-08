@@ -1,15 +1,14 @@
-import { Controller, Post, Body } from "@nestjs/common";
+import { Controller, Post, Body, BadRequestException } from "@nestjs/common";
 import { OrderNewService } from "./order-new.service";
+import { OrderNewDto } from "./dto/order-new.dto";
 
 @Controller("order_new")
 export class OrderNewController {
   constructor(private readonly orderNewService: OrderNewService) {}
 
   @Post()
-  orderHandler(@Body() body: any) {
-    const type = body?.data?.orders?.[0]?.type;
-
-    console.log("Received type:", type); // 👈 Add this line
+  orderHandler(@Body() body: OrderNewDto) {
+    const type = body.data.orders[0]?.type;
 
     switch (type) {
       case "p":
@@ -21,7 +20,7 @@ export class OrderNewController {
       case "switch":
         return this.orderNewService.switchOrder(body);
       default:
-        return { message: "Invalid order type" };
+        throw new BadRequestException("Invalid order type");
     }
   }
 }
